@@ -1,0 +1,9 @@
+.header-img {
+    height: 60px;
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
