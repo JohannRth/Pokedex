@@ -3,7 +3,7 @@ function init(){
 }
 
 async function fetchDataJson(){
-    let response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0');
+    let response = await fetch('https://pokeapi.co/api/v2/pokemon?offset=0&limit=');
     return response.json();
 }
 
