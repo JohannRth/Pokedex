@@ -25,14 +25,16 @@ function renderListOfPokemons(array) {
     for (let i = 0; i < array.length; i++) {
         let pokemonObj = array[i];
 
-        content.innerHTML += generateTable(pokemonObj, i,)
+        content.innerHTML += generateTable(i, pokemonObj,)
     }
 }
 
-function generateTable(pokemonObj, i,) {
+function generateTable(i,pokemonObj,) {
     return /*html*/`
-    <H1>Hello World
-    ${pokemonObj['name']}
-    ${i}</H1>
+
+    <div id="${i}">
+        <H1>Hello World ${pokemonObj['name']} ${i}</H1>
+    </div>
+        
 `;
 }
