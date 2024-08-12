@@ -1,19 +1,25 @@
-function init(){
+let loadLimit = 26;
+let BASE_URL = `https://pokeapi.co/api/v2/pokemon?offset=0&limit=${loadLimit}`;
+let pokemons = [];
+
+
+function init() {
     importPokemons();
 }
 
-async function fetchDataJson(){
-    let response = await fetch('https://pokeapi.co/api/v2/pokemon?offset=0&limit=');
+async function fetchDataJson() {
+    let response = await fetch(BASE_URL);
     return response.json();
 }
 
-async function importPokemons(){
-    let response = await fetchDataJson();
-    renderListOfPokemons(response);
+async function importPokemons() {
+    let data = await fetchDataJson();
+    pokemons = data.results;
+    renderListOfPokemons(pokemons);
 }
 
-function renderListOfPokemons(array){ 
-    let content = document.getElementById('pokedex-container');
+function renderListOfPokemons(array) {
+    let content = document.getElementById('content');
     content.innerHTML = '';
 
     for (let i = 0; i < array.length; i++) {
@@ -25,30 +31,8 @@ function renderListOfPokemons(array){
 
 function generateTable(pokemonObj, i,) {
     return /*html*/`
-    <tr class="d-flex col">
-        <td class="position-rel" onclick="handleCellClick('nestedTable${i}', 'dropdownIcon${i}')">
-            <h2>${pokemonObj['name']}</h2>
-        </td>
-        <td id="nestedTable${i}" class="d-none">
-            <table>
-                <tr>
-                    <td class="border-left-right-0">Kohlenhydrate</td>
-                    <td class="border-left-right-0">${pokemonObj['nutritions']['carbohydrates']} g</td>
-                </tr>
-                <tr>
-                    <td class="border-left-right-0">Protein</td>
-                    <td class="border-left-right-0">${pokemonObj['nutritions']['protein']} g</td>
-                </tr>
-                <tr>
-                    <td class="border-left-right-0">Fett</td>
-                    <td class="border-left-right-0">${pokemonObj['nutritions']['fat']} g</td>
-                </tr>
-                <tr>
-                    <td class="border-left-right-0"><b>Kalorien</b></td>
-                    <td class="border-left-right-0"><b>${pokemonObj['nutritions']['calories']} g</b></td>
-                </tr>
-            </table>
-        </td>
-    </tr>
+    <H1>Hello World
+    ${pokemonObj['name']}
+    ${i}</H1>
 `;
 }
