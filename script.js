@@ -2,39 +2,37 @@ let loadLimit = 26;
 let BASE_URL = `https://pokeapi.co/api/v2/pokemon?offset=0&limit=${loadLimit}`;
 let pokemons = [];
 
-
 function init() {
     importPokemons();
 }
 
-async function fetchDataJson() {
-    let response = await fetch(BASE_URL);
+async function fetchDataJson(url) {
+    let response = await fetch(url);
     return response.json();
 }
 
 async function importPokemons() {
-    let data = await fetchDataJson();
+    let data = await fetchDataJson(BASE_URL);
     pokemons = data.results;
     renderListOfPokemons(pokemons);
 }
 
-function renderListOfPokemons(array) {
+async function renderListOfPokemons(array) {
     let content = document.getElementById('content');
     content.innerHTML = '';
 
     for (let i = 0; i < array.length; i++) {
         let pokemonObj = array[i];
-
-        content.innerHTML += generateTable(i, pokemonObj,)
+        let pokemonData = await fetchDataJson(pokemonObj.url);  // Detaildaten für jedes Pokémon abrufen
+        content.innerHTML += generateTable(i, pokemonData);  // Übergeben der Detaildaten an generateTable
     }
 }
 
-function generateTable(i,pokemonObj,) {
+function generateTable(i, pokemonObj) {
     return /*html*/`
-
     <div id="${i}">
-        <H1>Hello World ${pokemonObj['name']} ${i}</H1>
+        <img src="${pokemonObj.sprites.other.showdown.front_default}" alt="${pokemonObj.name}">
+        <h1>${pokemonObj.name} #${i}</h1>
     </div>
-        
-`;
+    `;
 }
