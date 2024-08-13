@@ -32,10 +32,14 @@ function generateTable(i, pokemonObj) {
     return /*html*/`
     <div id="pokeCard${i}" class="col">
         <div class="card h-100">
-            <img src="${pokemonObj.sprites.other.showdown.front_default}" class="card-img-top">
+            <img src="${pokemonObj.sprites.other.showdown.front_default}" class="poke-img">
             <div class="card-body">
-                <h5 class="card-title">#${pokemonObj.id} ${pokemonObj.name}</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <h5 class="card-title">
+                    <p>#${pokemonObj.id}</p>
+                    <p>${pokemonObj.name}</p></h5>
+                <p class="card-text">
+
+                </p>
             </div>
         </div>
     </div>
