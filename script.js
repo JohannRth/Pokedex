@@ -30,9 +30,14 @@ async function renderListOfPokemons(array) {
 
 function generateTable(i, pokemonObj) {
     return /*html*/`
-    <div id="${i}">
-        <img src="${pokemonObj.sprites.other.showdown.front_default}" alt="${pokemonObj.name}">
-        <h1>${pokemonObj.name} #${i}</h1>
+    <div id="pokeCard${i}" class="col">
+        <div class="card h-100">
+            <img src="${pokemonObj.sprites.other.showdown.front_default}" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">#${pokemonObj.id} ${pokemonObj.name}</h5>
+                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div>
+        </div>
     </div>
     `;
 }
