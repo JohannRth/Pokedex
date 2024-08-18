@@ -40,7 +40,34 @@ body {
 }
 
 .poke-img {
-    scale: 1.3;
-    object-fit: cover;
-    position: relative;
+  object-fit: cover;
+  position: relative;
+}
+
+.card {
+  width: 280px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 20px;
+  padding: 15px;
+  border-radius: 4%;
+}
+
+.all-pokemon-card-small {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.card-img {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    height: 100px;
 }

@@ -30,9 +30,11 @@ async function renderListOfPokemons(array) {
 
 function generateTable(i, pokemonObj) {
     return /*html*/`
-    <div id="pokeCard${i}" class="col">
-        <div class="card h-100">
-            <img src="${pokemonObj.sprites.other.showdown.front_default}" class="poke-img">
+    <div id="pokeCard${i}" class="">
+        <div class="card">
+            <div class="card-img">
+                <img src="${pokemonObj.sprites.other.showdown.front_default}" class="poke-img">
+            </div>
             <div class="card-body">
                 <h5 class="card-title">
                     <p>#${pokemonObj.id}</p>
