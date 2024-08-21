@@ -32,16 +32,16 @@ function generateTable(i, pokemonObj) {
     return /*html*/`
     <div id="pokeCard${i}" class="">
         <div class="card">
+                <h5 class="card-title">
+                    <p>#${pokemonObj.id}</p>
+                    <p>${pokemonObj.name}</p></h5>
+                
             <div class="card-img">
                 <img src="${pokemonObj.sprites.other.showdown.front_default}" class="poke-img">
             </div>
             <div class="card-body">
-                <h5 class="card-title">
-                    <p>#${pokemonObj.id}</p>
-                    <p>${pokemonObj.name}</p></h5>
-                <p class="card-text">
-
-                </p>
+                <div class="poke-card-type-box"></div>
+                <div></div>
             </div>
         </div>
     </div>

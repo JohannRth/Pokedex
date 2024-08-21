@@ -71,3 +71,15 @@ body {
     align-items: center;
     height: 100px;
 }
+
+.card:hover {
+  transform: scale(1.1);
+  transition: all ease-in-out 250ms;
+  cursor: pointer;
+  filter: drop-shadow(0 4px 8px rgba(255, 255, 255, 1.1));
+}
+
+.card:hover .poke-img {
+  filter: drop-shadow(0 4px 8px rgba(255, 255, 255, 1.1));
+  transition: all ease-in-out 1000ms;
+}
