@@ -83,3 +83,144 @@ body {
   filter: drop-shadow(0 4px 8px rgba(255, 255, 255, 1.1));
   transition: all ease-in-out 1000ms;
 }
+
+.type-grass {
+  background-color: #78C850;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.type-poison {
+  background-color: #A040A0;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.type-normal {
+  background-color: #A8A77A;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.type-fire {
+  background-color: #EE8130;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.type-water {
+  background-color: #6390F0;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.type-electric {
+  background-color: #F7D02C;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.type-grass {
+  background-color: #7AC74C;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.type-ice {
+  background-color: #96D9D6;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.type-fighting {
+  background-color: #C22E28;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.type-poison {
+  background-color: #A33EA1;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.type-ground {
+  background-color: #E2BF65;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.type-flying {
+  background-color: #A98FF3;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.type-psychic {
+  background-color: #F95587;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.type-bug {
+  background-color: #A6B91A;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.type-rock {
+  background-color: #B6A136;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.type-ghost {
+  background-color: #735797;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.type-dragon {
+  background-color: #6F35FC;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.type-dark {
+  background-color: #705746;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.type-steel {
+  background-color: #B7B7CE;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.type-fairy {
+  background-color: #D685AD;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
