@@ -84,20 +84,6 @@ body {
   transition: all ease-in-out 1000ms;
 }
 
-.type-grass {
-  background-color: #78C850;
-  color: white;
-  padding: 5px;
-  border-radius: 5px;
-}
-
-.type-poison {
-  background-color: #A040A0;
-  color: white;
-  padding: 5px;
-  border-radius: 5px;
-}
-
 .type-normal {
   background-color: #A8A77A;
   color: white;
