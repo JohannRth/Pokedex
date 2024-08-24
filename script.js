@@ -64,3 +64,11 @@ function loadMorePokemons() {
     offset += loadLimit; // Offset erhöhen, um die nächsten Pokémon zu laden
     importPokemons(); // Weitere Pokémon importieren
 }
+
+// Neu: Funktion zum Laden von 151 Pokémon
+function loadAllPokemons() {
+    loadLimit = 151; // Setzt das Limit auf 151 Pokémon
+    offset = 0; // Startet wieder bei 0
+    document.getElementById('content').innerHTML = ''; // Inhalt leeren, um eine neue Liste anzuzeigen
+    importPokemons(); // Lade alle Pokémon
+}

@@ -36,14 +36,19 @@
     </header>
 
     <div id="content" class="all-pokemon-card-small">
-        
+
     </div>
 
     <!-- Button zum Laden weiterer Pokemon -->
-    <div class="load-more-container df">
-        <button onclick="loadMorePokemons()" class="btn btn-primary">Mehr Pokémon laden</button>
-    </div>
+    <div id="loadMoreButton" class="btn-section d-flex align-items-center flex-column">
+        <div class="btn-section load-more-container">
+            <button onclick="loadMorePokemons()" class="btn btn-primary">Mehr Pokémon laden</button>
+        </div>
+        <div class="btn-section">
+            <button onclick="loadAllPokemons()" class="btn btn-secondary">151 Pokémon laden</button>
+        </div>
 
+    </div>
 </body>
 
 </html>

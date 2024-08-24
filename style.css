@@ -84,6 +84,13 @@ body {
   transition: all ease-in-out 1000ms;
 }
 
+.btn-section  {
+  padding: 15px;
+}
+
+
+
+
 .type-normal {
   background-color: #A8A77A;
   color: white;
