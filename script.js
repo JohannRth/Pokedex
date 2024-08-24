@@ -1,7 +1,8 @@
 let loadLimit = 26;
-let offset = 0; // Neu: Start-Offset für die API-Abfrage
+let offset = 0; // Start-Offset für die API-Abfrage
 let BASE_URL = `https://pokeapi.co/api/v2/pokemon?`;
 let pokemons = [];
+const MAX_POKEMON = 151; // Maximale Anzahl von Pokémon
 
 function init() {
     importPokemons();
@@ -51,7 +52,7 @@ function generateTable(i, pokemonObj) {
     `;
 }
 
-// <!-- Typen anzeigen -->
+// Typen anzeigen
 function renderPokemonTypes(types) {
     return types.map(typeInfo => {
         let typeName = typeInfo.type.name;
@@ -59,16 +60,36 @@ function renderPokemonTypes(types) {
     }).join(' ');  // Fügt die Typen zu einem String zusammen
 }
 
-// Neu: Funktion zum Laden weiterer Pokémon
+// Funktion zum Laden weiterer Pokémon
 function loadMorePokemons() {
-    offset += loadLimit; // Offset erhöhen, um die nächsten Pokémon zu laden
-    importPokemons(); // Weitere Pokémon importieren
+    // Prüfen, ob noch weitere Pokémon geladen werden können
+    if (offset < MAX_POKEMON) {
+        offset += loadLimit; // Offset erhöhen, um die nächsten Pokémon zu laden
+        // Falls das nächste Offset größer als MAX_POKEMON wäre, wird es angepasst
+        if (offset + loadLimit > MAX_POKEMON) {
+            loadLimit = MAX_POKEMON - offset;
+        }
+        importPokemons(); // Weitere Pokémon importieren
+    }
+
+    // Ausblenden des Buttons, wenn das Limit erreicht ist
+    if (offset >= MAX_POKEMON) {
+        document.querySelector('#loadMoreButton').style.display = 'none'; // Button ausblenden
+    }
 }
 
-// Neu: Funktion zum Laden von 151 Pokémon
+// Funktion zum Laden von 151 Pokémon
 function loadAllPokemons() {
-    loadLimit = 151; // Setzt das Limit auf 151 Pokémon
+    loadLimit = MAX_POKEMON; // Setzt das Limit auf 151 Pokémon
     offset = 0; // Startet wieder bei 0
     document.getElementById('content').innerHTML = ''; // Inhalt leeren, um eine neue Liste anzuzeigen
     importPokemons(); // Lade alle Pokémon
+    // Button ausblenden, da wir bereits alle Pokémon laden
+    document.querySelector('#loadMoreButton').style.display = 'none';
 }
+
+
+
+
+
+// pokemonObj.sprites.other.showdown.front_default
