@@ -39,7 +39,7 @@ function generateTable(i, pokemonObj) {
                 <p>#${pokemonObj.id}</p>
                 <p>${pokemonObj.name}</p>
             </h5>
-            <div class="card-img">
+            <div class="d-flex justify-content-center">
                 <img src="${pokemonObj.sprites.other.showdown.front_default}" class="poke-img">
             </div>
             <div class="card-body">
@@ -74,7 +74,7 @@ function loadMorePokemons() {
 
     // Ausblenden des Buttons, wenn das Limit erreicht ist
     if (offset >= MAX_POKEMON) {
-        document.querySelector('#loadMoreButton').style.display = 'none'; // Button ausblenden
+        document.querySelector('#loadMoreButton').style.display = 'none !important'; // Button ausblenden
     }
 }
 

@@ -8,6 +8,12 @@
   align-items: center;
 }
 
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 body {
   background-image: url(./img/background.jpg);
   background-repeat: no-repeat;
@@ -46,13 +52,20 @@ body {
 
 .card {
   width: 280px;
-  height: 200px;
-  display: flex;
+  min-height: 300px;
+  display: flex !important;
   flex-direction: column;
   flex-wrap: wrap;
   margin: 20px;
   padding: 15px;
   border-radius: 4%;
+  justify-content: space-between;
+}
+
+.card-body {
+  flex: unset !important;
+  display: flex;
+  justify-content: center;
 }
 
 .all-pokemon-card-small {
@@ -65,11 +78,11 @@ body {
 }
 
 .card-img {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    align-items: center;
-    height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  height: 100px;
 }
 
 .card:hover {
@@ -84,8 +97,11 @@ body {
   transition: all ease-in-out 1000ms;
 }
 
-.btn-section  {
+.btn-section {
   padding: 15px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 
@@ -216,4 +232,3 @@ body {
   padding: 5px;
   border-radius: 5px;
 }
-
