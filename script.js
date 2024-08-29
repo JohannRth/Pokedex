@@ -32,14 +32,17 @@ async function renderListOfPokemons(array) {
 
 // Erstellen der einzelnen Karten für die Pokemon
 function generateTable(i, pokemonObj) {
+    // Bestimme die Haupttypklasse basierend auf dem ersten Typ des Pokémon
+    let mainType = pokemonObj.types[0].type.name;
+
     return /*html*/`
-    <div id="pokeCard${i}" class="">
-        <div class="card">
+    <div id="pokeCard${i}" class="pokeCard">
+        <div class="card type-${mainType}">
             <h5 class="card-title">
                 <p>#${pokemonObj.id}</p>
                 <p>${pokemonObj.name}</p>
             </h5>
-            <div class="d-flex justify-content-center">
+            <div class="card-img">
                 <img src="${pokemonObj.sprites.other.showdown.front_default}" class="poke-img">
             </div>
             <div class="card-body">
@@ -52,7 +55,7 @@ function generateTable(i, pokemonObj) {
     `;
 }
 
-// Typen anzeigen
+// Typen anzeigen und Hintergrundfarbe setzen
 function renderPokemonTypes(types) {
     return types.map(typeInfo => {
         let typeName = typeInfo.type.name;
@@ -74,7 +77,7 @@ function loadMorePokemons() {
 
     // Ausblenden des Buttons, wenn das Limit erreicht ist
     if (offset >= MAX_POKEMON) {
-        document.querySelector('#loadMoreButton').style.display = 'none !important'; // Button ausblenden
+        document.querySelector('#loadMoreButton').style.display = 'none'; // Button ausblenden
     }
 }
 
@@ -87,8 +90,6 @@ function loadAllPokemons() {
     // Button ausblenden, da wir bereits alle Pokémon laden
     document.querySelector('#loadMoreButton').style.display = 'none';
 }
-
-
 
 
 
