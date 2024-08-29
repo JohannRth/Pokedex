@@ -14,10 +14,12 @@ async function fetchDataJson(url) {
 }
 
 async function importPokemons() {
+    showLoadingScreen(); // Lade-Screen anzeigen
     let url = `${BASE_URL}offset=${offset}&limit=${loadLimit}`;
     let data = await fetchDataJson(url);
     pokemons = data.results;
-    renderListOfPokemons(pokemons);
+    await renderListOfPokemons(pokemons);
+    hideLoadingScreen(); // Lade-Screen verbergen
 }
 
 async function renderListOfPokemons(array) {
@@ -32,7 +34,6 @@ async function renderListOfPokemons(array) {
 
 // Erstellen der einzelnen Karten für die Pokemon
 function generateTable(i, pokemonObj) {
-    // Bestimme die Haupttypklasse basierend auf dem ersten Typ des Pokémon
     let mainType = pokemonObj.types[0].type.name;
 
     return /*html*/`
@@ -60,37 +61,45 @@ function renderPokemonTypes(types) {
     return types.map(typeInfo => {
         let typeName = typeInfo.type.name;
         return `<span class="badge type-${typeName}">${typeName}</span>`;
-    }).join(' ');  // Fügt die Typen zu einem String zusammen
+    }).join(' ');
+}
+
+// Funktion zum Anzeigen des Lade-Screens
+function showLoadingScreen() {
+    document.getElementById('loading-screen').style.display = 'flex';
+}
+
+// Funktion zum Verbergen des Lade-Screens
+function hideLoadingScreen() {
+    document.getElementById('loading-screen').style.display = 'none';
 }
 
 // Funktion zum Laden weiterer Pokémon
 function loadMorePokemons() {
-    // Prüfen, ob noch weitere Pokémon geladen werden können
     if (offset < MAX_POKEMON) {
-        offset += loadLimit; // Offset erhöhen, um die nächsten Pokémon zu laden
-        // Falls das nächste Offset größer als MAX_POKEMON wäre, wird es angepasst
+        offset += loadLimit;
         if (offset + loadLimit > MAX_POKEMON) {
             loadLimit = MAX_POKEMON - offset;
         }
-        importPokemons(); // Weitere Pokémon importieren
+        importPokemons();
     }
 
-    // Ausblenden des Buttons, wenn das Limit erreicht ist
+    // Button ausblenden, wenn das Limit erreicht ist
     if (offset >= MAX_POKEMON) {
-        document.querySelector('#loadMoreButton').style.display = 'none'; // Button ausblenden
+        document.querySelector('#loadMoreButton').style.display = 'none';
     }
 }
 
 // Funktion zum Laden von 151 Pokémon
 function loadAllPokemons() {
-    loadLimit = MAX_POKEMON; // Setzt das Limit auf 151 Pokémon
-    offset = 0; // Startet wieder bei 0
-    document.getElementById('content').innerHTML = ''; // Inhalt leeren, um eine neue Liste anzuzeigen
-    importPokemons(); // Lade alle Pokémon
-    // Button ausblenden, da wir bereits alle Pokémon laden
+    loadLimit = MAX_POKEMON;
+    offset = 0;
+    document.getElementById('content').innerHTML = '';
+    importPokemons();
+
+    // Button ausblenden, da wir alle Pokémon laden
     document.querySelector('#loadMoreButton').style.display = 'none';
 }
-
 
 
 // pokemonObj.sprites.other.showdown.front_default

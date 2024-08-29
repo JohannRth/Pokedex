@@ -104,11 +104,33 @@ body {
   flex-direction: column;
 }
 
-
-
 .badge {
   border: solid 1px black;
 }
+
+
+
+.loading-screen {
+  display: none; /* Standardmäßig ausgeblendet */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8); /* Weißer Hintergrund mit Transparenz */
+  z-index: 9999; /* Über alles andere legen */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-gif {
+  width: 100px; /* Größe des GIFs anpassen */
+  height: auto;
+}
+
+
+
 
 .type-normal {
   background-color: rgba(168, 167, 122, 0.8) !important;
@@ -181,7 +203,7 @@ body {
 }
 
 .type-psychic {
-  background-color: rgba(249, 85, 135, 0.8);
+  background-color: rgba(249, 85, 135, 0.8) !important;
   color: white;
   padding: 5px;
   border-radius: 5px;
