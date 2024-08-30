@@ -108,8 +108,6 @@ body {
   border: solid 1px black;
 }
 
-
-
 .loading-screen {
   display: none; /* Standardmäßig ausgeblendet */
   position: fixed;
@@ -117,7 +115,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.8); /* Weißer Hintergrund mit Transparenz */
+  background-color: rgba(86, 86, 86, 0.8); /* Weißer Hintergrund mit Transparenz */
   z-index: 9999; /* Über alles andere legen */
   display: flex;
   justify-content: center;
@@ -125,135 +123,11 @@ body {
 }
 
 .loading-gif {
-  width: 100px; /* Größe des GIFs anpassen */
+  width: 300px; /* Größe des GIFs anpassen */
   height: auto;
+  object-fit: cover;
 }
 
 
 
 
-.type-normal {
-  background-color: rgba(168, 167, 122, 0.8) !important;
-  color: white;
-  padding: 5px;
-  border-radius: 5px;
-}
-
-.type-fire {
-  background-color: rgba(238, 129, 48, 0.8) !important;
-  color: white;
-  padding: 5px;
-  border-radius: 5px;
-}
-
-.type-water {
-  background-color: rgba(99, 144, 240, 0.8) !important;
-  color: white;
-  padding: 5px;
-  border-radius: 5px;
-}
-
-.type-electric {
-  background-color: rgba(247, 208, 44, 0.8) !important;
-  color: white;
-  padding: 5px;
-  border-radius: 5px;
-}
-
-.type-grass {
-  background-color: rgba(122, 199, 76, 0.8) !important;
-  color: white;
-  padding: 5px;
-  border-radius: 5px;
-}
-
-.type-ice {
-  background-color: rgba(150, 217, 214, 0.8) !important;
-  color: white;
-  padding: 5px;
-  border-radius: 5px;
-}
-
-.type-fighting {
-  background-color: rgba(194, 46, 40, 0.8) !important;
-  color: white;
-  padding: 5px;
-  border-radius: 5px;
-}
-
-.type-poison {
-  background-color: rgba(163, 62, 161, 0.8) !important;
-  color: white;
-  padding: 5px;
-  border-radius: 5px;
-}
-
-.type-ground {
-  background-color: rgba(226, 191, 101, 0.8) !important;
-  color: white;
-  padding: 5px;
-  border-radius: 5px;
-}
-
-.type-flying {
-  background-color: rgba(169, 143, 243, 0.8) !important;
-  color: white;
-  padding: 5px;
-  border-radius: 5px;
-}
-
-.type-psychic {
-  background-color: rgba(249, 85, 135, 0.8) !important;
-  color: white;
-  padding: 5px;
-  border-radius: 5px;
-}
-
-.type-bug {
-  background-color: rgba(166, 185, 26, 0.8) !important;
-  color: white;
-  padding: 5px;
-  border-radius: 5px;
-}
-
-.type-rock {
-  background-color: rgba(182, 161, 54, 0.8) !important;
-  color: white;
-  padding: 5px;
-  border-radius: 5px;
-}
-
-.type-ghost {
-  background-color: rgba(115, 87, 151, 0.8) !important;
-  color: white;
-  padding: 5px;
-  border-radius: 5px;
-}
-
-.type-dragon {
-  background-color: rgba(111, 53, 252, 0.8) !important;
-  color: white;
-  padding: 5px;
-  border-radius: 5px;
-}
-
-.type-dark {
-  background-color: rgba(112, 87, 70, 0.8) !important;
-  color: white;
-  padding: 5px;
-  border-radius: 5px;
-}
-
-.type-steel {
-  background-color: rgba(183, 183, 206, 0.8) !important;
-  color: white;
-  padding: 5px;
-  border-radius: 5px;
-}
-
-.type-fairy {
-  background-color: rgba(214, 133, 173, 0.8) !important;
-  color: white;
-  padding: 5px;
-  border-radius: 5px;
-}
