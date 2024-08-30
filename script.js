@@ -83,9 +83,8 @@ function loadMorePokemons() {
         }
         importPokemons();
     }
-
     // Button ausblenden, wenn das Limit erreicht ist
-    if (offset >= MAX_POKEMON) {
+    if (offset + loadLimit >= MAX_POKEMON) {
         document.querySelector('#loadMoreButton').style.display = 'none';
     }
 }

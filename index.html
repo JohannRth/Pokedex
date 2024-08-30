@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="types.css">
     <script src="script.js"></script>
+    <script src="search.js" defer></script>
     <!-- Link-Fonts -->
     <!-- <link rel="stylesheet" href="fonts.css"> -->
     <!-- Favicon -->
@@ -31,9 +32,8 @@
 
         <div class="input-group">
             <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
-                aria-describedby="search-addon" />
-            <button type="button" class="btn btn-outline-primary" data-mdb-ripple-init>search</button>
-        </div>
+                aria-describedby="search-addon" id="searchInput" oninput="searchPokemon()"/>
+        </div>  
     </header>
 
     <div id="loading-screen" class="loading-screen">
