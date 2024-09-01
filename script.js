@@ -17,18 +17,18 @@ async function importPokemons() {
     showLoadingScreen(); // Lade-Screen anzeigen
     let url = `${BASE_URL}offset=${offset}&limit=${loadLimit}`;
     let data = await fetchDataJson(url);
-    pokemons = data.results;
-    await renderListOfPokemons(pokemons);
+    pokemons = pokemons.concat(data.results); // Neue Daten zu bestehenden hinzufügen
+    await renderListOfPokemons(data.results); // Nur die neu geladenen Pokémon rendern
     hideLoadingScreen(); // Lade-Screen verbergen
 }
 
 async function renderListOfPokemons(array) {
     let content = document.getElementById('content');
-
     for (let i = 0; i < array.length; i++) {
         let pokemonObj = array[i];
         let pokemonData = await fetchDataJson(pokemonObj.url);  // Detaildaten für jedes Pokémon abrufen
-        content.innerHTML += generateTable(i + offset, pokemonData);  // Übergeben der Detaildaten an generateTable
+        let pokemonHTML = generateTable(i + offset, pokemonData);  // Übergeben der Detaildaten an generateTable
+        content.insertAdjacentHTML('beforeend', pokemonHTML);
     }
 }
 
