@@ -3,7 +3,7 @@ function generateTable(i, pokemonObj) {
     let mainType = pokemonObj.types[0].type.name;
 
     return /*html*/`
-    <div id="pokeCard${i}" class="pokeCard">
+    <div id="pokeCard${i}" class="pokeCard btn" type="button" data-toggle="modal" data-target="#exampleModalCenter">
         <div class="card type-${mainType}">
             <h5 class="card-title">
                 <p>#${pokemonObj.id}</p>
@@ -29,3 +29,16 @@ function renderPokemonTypes(types) {
         return `<span class="badge type-${typeName}">${typeName}</span>`;
     }).join(' ');
 }
+
+
+
+
+
+
+
+var myModal = document.getElementById('myModal')
+var myInput = document.getElementById('myInput')
+
+myModal.addEventListener('shown.bs.modal', function () {
+  myInput.focus()
+})
