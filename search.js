@@ -1,18 +1,23 @@
+// Suchfunktion mit Debouncing
 function searchPokemon() {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(handleSearch, 300);
+}
+
+// Überprüfe den Suchbegriff und filtere Pokémon, wenn nötig
+function handleSearch() {
     const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+    searchTerm.length < 3 ? showAllPokemons() : filterAndShowPokemons(searchTerm);
+}
 
-    // Leere die aktuelle Anzeige vor jeder neuen Suche
-    document.getElementById('content').innerHTML = '';
+// Zeige alle geladenen Pokémon an
+function showAllPokemons() {
+    currentPokemons = allPokemons;
+    renderListOfPokemons(currentPokemons);
+}
 
-    // Wenn der Suchbegriff weniger als 3 Zeichen hat, zeige alle geladenen Pokémon
-    if (searchTerm.length < 3) {
-        renderListOfPokemons(pokemons);
-        return;
-    }
-
-    // Suche nach Pokémon, deren Namen den Suchbegriff enthalten
-    const filteredPokemons = pokemons.filter(pokemon => pokemon.name.toLowerCase().includes(searchTerm));
-
-    // Zeige die gefilterten Pokémon an
-    renderListOfPokemons(filteredPokemons);
+// Filtere Pokémon nach dem Suchbegriff und zeige sie an
+function filterAndShowPokemons(searchTerm) {
+    currentPokemons = allPokemons.filter(pokemon => pokemon.name.toLowerCase().includes(searchTerm));
+    renderListOfPokemons(currentPokemons);
 }

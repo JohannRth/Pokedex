@@ -2,42 +2,39 @@ let loadLimit = 26;
 let offset = 0; // Start-Offset für die API-Abfrage
 let BASE_URL = `https://pokeapi.co/api/v2/pokemon?`;
 let pokemons = [];
+let allPokemons = [];
+let currentPokemons = [];
+let pokemonDetailsCache = {};
 const MAX_POKEMON = 151; // Maximale Anzahl von Pokémon
+let debounceTimer;
 
 function init() {
     importPokemons();
 }
 
+// Daten von der API abrufen und als JSON zurückgeben
 async function fetchDataJson(url) {
     let response = await fetch(url);
     return response.json();
 }
 
+// Pokémon von der API laden
 async function importPokemons() {
-    showLoadingScreen(); // Lade-Screen anzeigen
+    showLoadingScreen();
     let url = `${BASE_URL}offset=${offset}&limit=${loadLimit}`;
     let data = await fetchDataJson(url);
-    pokemons = pokemons.concat(data.results); // Neue Daten zu bestehenden hinzufügen
-    await renderListOfPokemons(data.results); // Nur die neu geladenen Pokémon rendern
-    hideLoadingScreen(); // Lade-Screen verbergen
+    allPokemons = allPokemons.concat(data.results); // Neue Pokémon zur Liste hinzufügen
+    currentPokemons = allPokemons;
+    await renderListOfPokemons(data.results); // Nur neue Pokémon rendern
+    hideLoadingScreen();
 }
 
-async function renderListOfPokemons(array) {
-    let content = document.getElementById('content');
-    for (let i = 0; i < array.length; i++) {
-        let pokemonObj = array[i];
-        let pokemonData = await fetchDataJson(pokemonObj.url);  // Detaildaten für jedes Pokémon abrufen
-        let pokemonHTML = generateTable(i + offset, pokemonData);  // Übergeben der Detaildaten an generateTable
-        content.insertAdjacentHTML('beforeend', pokemonHTML);
-    }
-}
-
-// Funktion zum Anzeigen des Lade-Screens
+// Zeige Lade-Screen
 function showLoadingScreen() {
     document.getElementById('loading-screen').style.display = 'flex';
 }
 
-// Funktion zum Verbergen des Lade-Screens
+// Verberge Lade-Screen
 function hideLoadingScreen() {
     document.getElementById('loading-screen').style.display = 'none';
 }
@@ -51,7 +48,6 @@ function loadMorePokemons() {
         }
         importPokemons();
     }
-    // Button ausblenden, wenn das Limit erreicht ist
     if (offset + loadLimit >= MAX_POKEMON) {
         document.querySelector('#loadMoreButton').style.display = 'none';
     }
@@ -63,10 +59,32 @@ function loadAllPokemons() {
     offset = 0;
     document.getElementById('content').innerHTML = '';
     importPokemons();
-
-    // Button ausblenden, da wir alle Pokémon laden
     document.querySelector('#loadMoreButton').style.display = 'none';
 }
 
+// Pokémon-Details rendern
+async function renderListOfPokemons(array) {
+    document.getElementById('content').innerHTML = ''; // Bestehenden Inhalt leeren
+    let html = await getPokemonHtml(array); // HTML für Pokémon holen
+    document.getElementById('content').innerHTML = html; // HTML einfügen
+}
+
+// HTML für Pokémon erstellen
+async function getPokemonHtml(array) {
+    let html = '';
+    for (let i = 0; i < array.length; i++) {
+        let data = await getPokemonData(array[i]); // Daten aus dem Cache oder API holen
+        html += generateTable(i, data); // HTML für das Pokémon generieren
+    }
+    return html;
+}
+
+// Pokémon-Daten holen und cachen
+async function getPokemonData(pokemon) {
+    if (!pokemonDetailsCache[pokemon.name]) {
+        pokemonDetailsCache[pokemon.name] = await fetchDataJson(pokemon.url);
+    }
+    return pokemonDetailsCache[pokemon.name];
+}
 
 // pokemonObj.sprites.other.showdown.front_default
