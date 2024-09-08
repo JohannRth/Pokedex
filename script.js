@@ -19,14 +19,17 @@ async function fetchDataJson(url) {
 }
 
 // Pokémon von der API laden
-async function importPokemons() {
-    showLoadingScreen();
+async function importPokemons(append = false) {
+    showLoadingScreen();  // Lade-Screen anzeigen
     let url = `${BASE_URL}offset=${offset}&limit=${loadLimit}`;
     let data = await fetchDataJson(url);
-    allPokemons = allPokemons.concat(data.results); // Neue Pokémon zur Liste hinzufügen
-    currentPokemons = allPokemons;
-    await renderListOfPokemons(data.results); // Nur neue Pokémon rendern
-    hideLoadingScreen();
+    
+    // Pokémon-Liste erweitern (damit alle geladenen Pokémon gespeichert bleiben)
+    pokemons = pokemons.concat(data.results);  
+    
+    // Rendern und abhängig vom "append" die Pokémon anhängen oder überschreiben
+    await renderListOfPokemons(data.results, append);  
+    hideLoadingScreen();  // Lade-Screen verbergen
 }
 
 // Zeige Lade-Screen
@@ -46,8 +49,10 @@ function loadMorePokemons() {
         if (offset + loadLimit > MAX_POKEMON) {
             loadLimit = MAX_POKEMON - offset;
         }
-        importPokemons();
+        importPokemons(true);  // Append wird auf true gesetzt, um die Pokémon an den vorhandenen Inhalt anzuhängen
     }
+
+    // Button ausblenden, wenn das Limit erreicht ist
     if (offset + loadLimit >= MAX_POKEMON) {
         document.querySelector('#loadMoreButton').style.display = 'none';
     }
@@ -63,10 +68,16 @@ function loadAllPokemons() {
 }
 
 // Pokémon-Details rendern
-async function renderListOfPokemons(array) {
-    document.getElementById('content').innerHTML = ''; // Bestehenden Inhalt leeren
+async function renderListOfPokemons(array, append = false) {
+    let content = document.getElementById('content');
+    
+    // Wenn append true ist, behalte den bestehenden Inhalt, ansonsten leere den Inhalt
+    if (!append) {
+        content.innerHTML = '';
+    }
+
     let html = await getPokemonHtml(array); // HTML für Pokémon holen
-    document.getElementById('content').innerHTML = html; // HTML einfügen
+    content.insertAdjacentHTML('beforeend', html); // HTML an das Ende des Inhalts einfügen
 }
 
 // HTML für Pokémon erstellen

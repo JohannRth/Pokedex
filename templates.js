@@ -1,4 +1,4 @@
-// Erstellen der einzelnen Karten für die Pokémon
+// Erstellen der einzelnen Karten für die Pokemon
 function generateTable(i, pokemonObj) {
     let mainType = pokemonObj.types[0].type.name;
 
