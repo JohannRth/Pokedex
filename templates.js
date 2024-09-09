@@ -3,11 +3,11 @@ function generateTable(i, pokemonObj) {
     let mainType = pokemonObj.types[0].type.name;
 
     return /*html*/`
-    <div id="pokeCard${pokemonObj.id}" class="pokeCard" data-id="${pokemonObj.id}">
+    <div id="pokeCard${i}" class="pokeCard" onclick="showPokemonModal(${pokemonObj.id})">
         <div class="card type-${mainType}">
             <h5 class="card-title">
                 <p>#${pokemonObj.id}</p>
-                <p>${capitalizeFirstLetter(pokemonObj.name)}</p>
+                <p>${pokemonObj.name}</p>
             </h5>
             <div class="card-img">
                 <img src="${pokemonObj.sprites.other.showdown.front_default}" class="poke-img">
@@ -22,7 +22,7 @@ function generateTable(i, pokemonObj) {
     `;
 }
 
-// Funktion zum Rendern der Typ-Badges (wird bereits verwendet)
+// Typen anzeigen und Hintergrundfarbe setzen
 function renderPokemonTypes(types) {
     return types.map(typeInfo => {
         let typeName = typeInfo.type.name;

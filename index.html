@@ -9,17 +9,13 @@
     <!-- Link -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="types.css">
-    <!-- Bootstrap JavaScript und Popper.js (für Modals) -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"></script>
-
-    <!-- Deine eigenen JavaScript-Dateien -->
     <script src="script.js"></script>
     <script src="templates.js"></script>
+    <script src="search.js" defer></script>
     <script src="modal.js"></script>
     <script src="modal-templates.js"></script>
-    <script src="search.js" defer></script>
     <!-- Link-Fonts -->
     <!-- <link rel="stylesheet" href="fonts.css"> -->
     <!-- Favicon -->
@@ -64,19 +60,22 @@
     </div>
 
     <!-- Modal -->
-    <div id="pokemonModal" class="modal fade" tabindex="-1">
-        <div class="modal-dialog">
-            <div id="pokemonModalContent" class="modal-content">
+    <div class="modal fade" id="pokemonModal" tabindex="-1" aria-labelledby="pokemonModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
                 <div class="modal-header">
-                    <h5 id="pokemonModalLabel" class="modal-title">Pokemon Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    <h5 class="modal-title" id="pokemonModalLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div id="pokemonModalBody" class="modal-body">
-                    <!-- Inhalt wird hier dynamisch eingefügt -->
+                <div class="modal-body">
+                    <div id="pokemonModalContent">
+                        <!-- Dynamischer Inhalt wird hier eingefügt -->
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
 
     <footer id="footer" class="footer-content">
         <a href="#header">

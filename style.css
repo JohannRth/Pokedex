@@ -34,6 +34,10 @@ body {
   width: 50% !important;
 }
 
+.form-control {
+  background-color: rgba(240, 248, 255, 0.447) !important;
+}
+
 .row {
   margin-top: 0px !important;
   margin-left: 0px !important;
@@ -109,38 +113,99 @@ body {
 }
 
 .loading-screen {
-  display: none; /* Standardmäßig ausgeblendet */
+  display: none;
+  /* Standardmäßig ausgeblendet */
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(37, 39, 62, 0.95); /* Weißer Hintergrund mit Transparenz */
-  z-index: 9999; /* Über alles andere legen */
+  background-color: rgba(37, 39, 62, 0.95);
+  /* Weißer Hintergrund mit Transparenz */
+  z-index: 9999;
+  /* Über alles andere legen */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .loading-gif {
-  width: 300px; /* Größe des GIFs anpassen */
+  width: 300px;
+  /* Größe des GIFs anpassen */
   height: auto;
   object-fit: cover;
 }
 
-.pokemon-stats .progress-bar {
-  text-align: right;
-  color: white;
-  padding-right: 5px;
-}
-
 .img-fluid {
-  max-width: 70% !important;
-  height: auto;
+  max-width: 65% !important;
 }
 
 .progress {
+  height: 25px !important;
+  background-color: rgba(240, 248, 255, 0.447) !important;
+  margin-bottom: 10px;
   border: solid 1px black;
 }
 
+.progress-bar {
+  background-color: #007bff;
+  /* Farbe der Progressbar */
+  color: #000000 !important;
+  /* Textfarbe */
+  overflow: unset !important;
+}
 
+@media (max-width: 900px) {
+  .input-group {
+    width: 70% !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .header-img {
+    height: 50px;
+  }
+
+  .card {
+    margin: 10px;
+  }
+  .card:hover {
+    transform: scale(1.05);
+}
+}
+
+/* Nur für den großen Bildschirm damit keine Scrolbar entsteht */
+@media (min-width: 992px) {
+  .img-fluid {
+    max-width: 55% !important;
+  }
+}
+
+/* Scrollbar */
+
+body {
+  --sb-track-color: #262333;
+  --sb-thumb-color: #5c5898;
+  --sb-size: 14px;
+}
+
+body::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 3px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 3px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  body {
+      scrollbar-color: var(--sb-thumb-color)
+                     var(--sb-track-color);
+  }
+}

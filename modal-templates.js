@@ -1,37 +1,40 @@
-// Generiere den Inhalt des Modals (Bild, Typen, Stats und Navigation)
-function generatePokemonDetails(pokemonData, pokemonId) {
+function setModalBody(pokemon) {
+    let modalContent = `
+        <div class="text-center">
+            <img src="${pokemon.sprites.other['official-artwork'].front_default}" class="poke-img-lg img-fluid">
+        </div>
+        <div class="types text-center my-3">
+            ${renderPokemonTypes(pokemon.types)}
+        </div>
+        <div class="stats">
+            ${renderProgressBar('HP', pokemon.stats[0].base_stat)}
+            ${renderProgressBar('Attack', pokemon.stats[1].base_stat)}
+            ${renderProgressBar('Defense', pokemon.stats[2].base_stat)}
+            ${renderProgressBar('Special Attack', pokemon.stats[3].base_stat)}
+            ${renderProgressBar('Special Defense', pokemon.stats[4].base_stat)}
+            ${renderProgressBar('Speed', pokemon.stats[5].base_stat)}
+        </div>
+        <div class="modal-footer d-flex justify-content-around">
+            <button id="previousButton" class="btn btn-primary" onclick="previousPokemon(${pokemon.id})">Previous</button>
+            <button id="nextButton" class="btn btn-primary" onclick="nextPokemon(${pokemon.id})">Next</button>
+        </div>
+    `;
+
+    document.getElementById('pokemonModalContent').innerHTML = modalContent;
+}
+
+function renderProgressBar(statName, value) {
+    // Definiere eine maximale Skala für den Fortschrittsbalken
+    const MAX_STAT_VALUE = 200;  // Höchster Wert, den ein Pokémon-Stat erreichen kann (als Beispiel)
+    
+    // Berechne die Breite des Fortschrittsbalkens proportional zum Wert
+    const percentage = Math.min(100, (value / MAX_STAT_VALUE) * 100);
+
     return `
-        <div class="pokemon-modal-content text-center">
-            <img src="${pokemonData.sprites.other['official-artwork'].front_default}" class="img-fluid mb-3" alt="${pokemonData.name}">
-            <div class="poke-card-type-box mb-3">
-                ${renderPokemonTypes(pokemonData.types)}
-            </div>
-            <div class="pokemon-stats mb-3">
-                <h6>Stats:</h6>
-                ${generateProgressBars(pokemonData.stats)}
-            </div>
-            <div class="pokemon-navigation d-flex justify-content-between">
-                <button id="prevPokemon" class="btn btn-primary">
-                    <i class="bi bi-arrow-left"></i> Previous
-                </button>
-                <button id="nextPokemon" class="btn btn-primary">
-                    Next <i class="bi bi-arrow-right"></i>
-                </button>
+        <div class="progress mb-2">
+            <div class="progress-bar" role="progressbar" style="width: ${percentage}%" aria-valuenow="${value}" aria-valuemin="0" aria-valuemax="${MAX_STAT_VALUE}">
+                ${statName}: ${value}
             </div>
         </div>
     `;
-}
-
-// Generiere die Fortschrittsbalken für die Pokémon-Stats
-function generateProgressBars(stats) {
-    return stats.map(stat => {
-        return `
-            <div class="progress-container mb-2">
-                <span class="stat-name">${capitalizeFirstLetter(stat.stat.name)}: ${stat.base_stat}</span>
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: ${stat.base_stat}%" aria-valuenow="${stat.base_stat}" aria-valuemin="0" aria-valuemax="100">${stat.base_stat}</div>
-                </div>
-            </div>
-        `;
-    }).join('');
 }
