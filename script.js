@@ -52,6 +52,9 @@ function loadMorePokemons() {
 function loadAllPokemons() {
     loadLimit = MAX_POKEMON;
     offset = 0;
+    pokemons = [];
+    currentPokemons = [];
+    
     document.getElementById('content').innerHTML = '';
     importPokemons();
     document.querySelector('#loadMoreButton').style.display = 'none';

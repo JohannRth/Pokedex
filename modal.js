@@ -8,7 +8,6 @@ function showPokemonModal(pokemonId) {
     setModalHeader(pokemon);
     setModalBody(pokemon);
 
-    // Bootstrap Modal anzeigen
     let pokemonModal = new bootstrap.Modal(document.getElementById('pokemonModal'));
     pokemonModal.show();
 }
