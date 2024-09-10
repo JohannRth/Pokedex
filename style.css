@@ -122,16 +122,13 @@ body {
 
 .loading-screen {
   display: none;
-  /* Standardmäßig ausgeblendet */
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(37, 39, 62, 0.95);
-  /* Weißer Hintergrund mit Transparenz */
   z-index: 9999;
-  /* Über alles andere legen */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -139,7 +136,6 @@ body {
 
 .loading-gif {
   width: 300px;
-  /* Größe des GIFs anpassen */
   height: auto;
   object-fit: cover;
 }
@@ -157,9 +153,7 @@ body {
 
 .progress-bar {
   background-color: #007bff;
-  /* Farbe der Progressbar */
   color: #000000 !important;
-  /* Textfarbe */
   overflow: unset !important;
 }
 
@@ -191,7 +185,6 @@ body {
   }
 }
 
-/* Nur für den großen Bildschirm damit keine Scrolbar entsteht */
 @media (min-width: 992px) {
   .img-fluid {
     max-width: 55% !important;

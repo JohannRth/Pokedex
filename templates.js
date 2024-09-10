@@ -1,4 +1,3 @@
-// Erstellen der einzelnen Karten für die Pokemon
 function generateTable(i, pokemonObj) {
     let mainType = pokemonObj.types[0].type.name;
 
@@ -22,7 +21,6 @@ function generateTable(i, pokemonObj) {
     `;
 }
 
-// Typen anzeigen und Hintergrundfarbe setzen
 function renderPokemonTypes(types) {
     return types.map(typeInfo => {
         let typeName = typeInfo.type.name;

@@ -24,10 +24,8 @@ function setModalBody(pokemon) {
 }
 
 function renderProgressBar(statName, value) {
-    // maximale Scala für den Fortschrittbalken
     const MAX_STAT_VALUE = 200;
-    
-    // Berechnet die Breite des Fortschrittsbalkens proportional zum Wert
+
     const percentage = Math.min(100, (value / MAX_STAT_VALUE) * 100);
 
     return `
