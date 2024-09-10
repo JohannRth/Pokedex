@@ -24,10 +24,10 @@ function setModalBody(pokemon) {
 }
 
 function renderProgressBar(statName, value) {
-    // Definiere eine maximale Skala für den Fortschrittsbalken
-    const MAX_STAT_VALUE = 200;  // Höchster Wert, den ein Pokémon-Stat erreichen kann (als Beispiel)
+    // maximale Scala für den Fortschrittbalken
+    const MAX_STAT_VALUE = 200;
     
-    // Berechne die Breite des Fortschrittsbalkens proportional zum Wert
+    // Berechnet die Breite des Fortschrittsbalkens proportional zum Wert
     const percentage = Math.min(100, (value / MAX_STAT_VALUE) * 100);
 
     return `

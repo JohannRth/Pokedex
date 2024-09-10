@@ -7,7 +7,7 @@ function generateTable(i, pokemonObj) {
         <div class="card type-${mainType}">
             <h5 class="card-title">
                 <p>#${pokemonObj.id}</p>
-                <p>${pokemonObj.name}</p>
+                <p>${capitalizeFirstLetter(pokemonObj.name)}</p>
             </h5>
             <div class="card-img">
                 <img src="${pokemonObj.sprites.other.showdown.front_default}" class="poke-img">

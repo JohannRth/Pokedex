@@ -23,12 +23,12 @@ async function importPokemons(append = false) {
     showLoadingScreen();  // Lade-Screen anzeigen
     let url = `${BASE_URL}offset=${offset}&limit=${loadLimit}`;
     let data = await fetchDataJson(url);
-    
+
     // Pokémon-Liste erweitern (damit alle geladenen Pokémon gespeichert bleiben)
-    pokemons = pokemons.concat(data.results);  
-    
+    pokemons = pokemons.concat(data.results);
+
     // Rendern und abhängig vom "append" die Pokémon anhängen oder überschreiben
-    await renderListOfPokemons(data.results, append);  
+    await renderListOfPokemons(data.results, append);
     hideLoadingScreen();  // Lade-Screen verbergen
 }
 
@@ -70,7 +70,7 @@ function loadAllPokemons() {
 // Pokémon-Details rendern
 async function renderListOfPokemons(array, append = false) {
     let content = document.getElementById('content');
-    
+
     // Wenn append true ist, behalte den bestehenden Inhalt, ansonsten leere den Inhalt
     if (!append) {
         content.innerHTML = '';
@@ -96,6 +96,11 @@ async function getPokemonData(pokemon) {
         pokemonDetailsCache[pokemon.name] = await fetchDataJson(pokemon.url);
     }
     return pokemonDetailsCache[pokemon.name];
+}
+
+// Hilfsfunktion, um den ersten Buchstaben eines Strings großzuschreiben
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 // pokemonObj.sprites.other.showdown.front_default

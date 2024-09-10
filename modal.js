@@ -32,7 +32,7 @@ function setModalType(mainType) {
 
 // Setzt den Header des Modals mit der ID und dem Namen des Pokémons
 function setModalHeader(pokemon) {
-    document.getElementById('pokemonModalLabel').innerHTML = `#${pokemon.id} - ${pokemon.name}`;
+    document.getElementById('pokemonModalLabel').innerHTML = `#${pokemon.id} - ${capitalizeFirstLetter(pokemon.name)}`;
 }
 
 // Zeigt das nächste Pokémon im Modal an

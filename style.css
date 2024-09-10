@@ -1,3 +1,19 @@
+body {
+  background-image: url(./img/background.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+}
+
+.content-zone {
+  width: 100%;
+  max-width: 1440px;
+  padding: 0 160px;
+}
+
 .header-img {
   height: 60px;
 }
@@ -12,14 +28,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-body {
-  background-image: url(./img/background.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  background-attachment: fixed;
 }
 
 .input-group {
@@ -156,6 +164,10 @@ body {
 }
 
 @media (max-width: 900px) {
+  .content-zone {
+    padding: 0 80px !important;
+  }
+
   .input-group {
     width: 70% !important;
   }
@@ -169,9 +181,14 @@ body {
   .card {
     margin: 10px;
   }
+
   .card:hover {
     transform: scale(1.05);
-}
+  }
+
+  .input-group {
+    width: 100% !important;
+  }
 }
 
 /* Nur für den großen Bildschirm damit keine Scrolbar entsteht */
@@ -205,7 +222,6 @@ body::-webkit-scrollbar-thumb {
 
 @supports not selector(::-webkit-scrollbar) {
   body {
-      scrollbar-color: var(--sb-thumb-color)
-                     var(--sb-track-color);
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
   }
 }
