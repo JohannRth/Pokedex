@@ -1,3 +1,10 @@
+
+/**
+ * 
+ * @param {*} i 
+ * @param {*} pokemonObj 
+ * @returns 
+ */
 function generateTable(i, pokemonObj) {
     let mainType = pokemonObj.types[0].type.name;
 
